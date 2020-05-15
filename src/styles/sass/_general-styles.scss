@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    textarea:focus, input:focus{
+        outline: none;
+    }
+}
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    background: url('../img/webb.png'), #f0f0f0
+}
