@@ -56,3 +56,9 @@ body {
     transition: all .3s ease-in; }
     .loginForm__btn:hover {
       transform: scale(1.1); }
+  .loginForm__signup {
+    margin-top: 20px;
+    font-size: 17px; }
+    .loginForm__signup p {
+      display: inline-block;
+      margin-right: 5px; }

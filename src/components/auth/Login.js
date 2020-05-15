@@ -1,14 +1,16 @@
 import React, {useState} from 'react';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
 
     const [ userInfo, setUserInfo ] = useState({
         email: "",
         password: ""
-    })
+    });
+    const [ error, setError] = useState(false);
 
     const { email, password } = userInfo;
-
+    //Saving users input into the local state
     const onChangeLogin = (e) => {
         setUserInfo({
             ...userInfo,
@@ -16,10 +18,28 @@ const Login = () => {
         })
     };
 
+    //funtion trigered when a user submits the form
+
+    const submitForm = e => {
+        e.preventDefault();
+
+        //If the user didnt filled a field
+        if(email.trim() === '' || password.trim() === ''){
+            setError(true)
+            return
+        }
+
+        setError(false);
+        console.log('form submitted')
+    }
+
     return ( 
 
         <div className="container">
-            <form className='loginForm'>     
+            <form 
+                className='loginForm'
+                onSubmit={submitForm}
+            >     
                 <h2 className='loginForm__title'>Log In</h2>
                 <div className="loginForm__fields">
                     <label htmlFor="email">Email</label>
@@ -47,6 +67,15 @@ const Login = () => {
                     />
                 </div>
             </form>
+            <div className='loginForm__signup'>
+                <p >
+                    Dont have an account? 
+                </p>
+                <Link to={'/sign-up'} className='loginForm__signup-link'>
+                    Sign up &rArr;
+                </Link>
+            </div>
+
         </div>
      );
 }
