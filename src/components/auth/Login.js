@@ -2,8 +2,18 @@ import React, {useState} from 'react';
 
 const Login = () => {
 
-    const onChangeLogin = () => {
+    const [ userInfo, setUserInfo ] = useState({
+        email: "",
+        password: ""
+    })
 
+    const { email, password } = userInfo;
+
+    const onChangeLogin = (e) => {
+        setUserInfo({
+            ...userInfo,
+            [e.target.name] : e.target.value
+        })
     };
 
     return ( 
@@ -17,14 +27,18 @@ const Login = () => {
                             type="email"
                             placeholder="email"
                             id='email'
+                            name='email'
                             onChange={onChangeLogin}
+                            value={email}
                     />
                     <label htmlFor="password">Password</label>
                     <input 
                             type="password"
                             placeholder="Password"
                             id='password'
+                            name='password'
                             onChange={onChangeLogin}
+                            value={password}
                     />
                     <input 
                         type="submit" 
