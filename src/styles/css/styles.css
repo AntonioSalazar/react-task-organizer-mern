@@ -9,7 +9,7 @@
 
 body {
   font-family: 'Nunito Sans', sans-serif;
-  background: url("../img/webb.png"), #f0f0f0; }
+  background: url("../img/oriental-tiles.png"), #f0f0f0; }
 
 .container {
   width: 100%;
@@ -132,3 +132,75 @@ body {
     width: 90%; }
   .newAccountForm__btn {
     width: 50%; } }
+
+.sidebar {
+  background: #fff;
+  width: 20%;
+  height: 100vh; }
+  .sidebar__name {
+    padding: 20px 10px;
+    font-weight: 300;
+    text-align: center; }
+  .sidebar span {
+    text-decoration: underline;
+    font-weight: bold; }
+  .sidebar h2 {
+    text-align: center; }
+
+@media screen and (max-width: 800px) {
+  .sidebar {
+    margin: 0 auto;
+    width: 80%; } }
+
+.newProjectForm {
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 20px; }
+  .newProjectForm__btn {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 90%;
+    border-radius: 4px;
+    border: 1px solid #293040;
+    color: #fff;
+    background: #293040;
+    transition: all .3s ease-in; }
+    .newProjectForm__btn:hover {
+      transform: scale(1.1); }
+    .newProjectForm__btn-submit {
+      display: block;
+      margin: 10px auto;
+      padding: 10px;
+      width: 90%;
+      border-radius: 4px;
+      border: 1px solid #293040;
+      color: #fff;
+      background: #293040;
+      transition: all .3s ease-in; }
+      .newProjectForm__btn-submit:hover {
+        transform: scale(1.1); }
+  .newProjectForm__form input[type='text'] {
+    text-align: center;
+    border: 2px solid #293040;
+    border-radius: 5px;
+    width: 90%;
+    margin: 20px auto;
+    padding: 5px; }
+    .newProjectForm__form input[type='text']:focus {
+      box-shadow: 5px 5px 10px #888888; }
+    .newProjectForm__form input[type='text']:hover {
+      border: 2px solid #293040;
+      box-shadow: 5px 5px 10px #888888; }
+
+.error p {
+  display: inline-block;
+  margin-bottom: 0;
+  padding: 20px;
+  background: #D10000;
+  color: #fff;
+  border-radius: 4px; }
+
+.projectsList li {
+  list-style: none;
+  margin-left: 20px; }

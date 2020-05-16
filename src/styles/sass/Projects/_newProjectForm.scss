@@ -1,0 +1,57 @@
+.newProjectForm{
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+
+    &__btn{
+        display: block;
+        margin: 10px auto;
+        padding: 10px;
+        width: 90%;
+        border-radius: 4px;
+        border: 1px solid #293040;
+        color: #fff;
+        background: #293040;
+        transition: all .3s ease-in;
+
+        &:hover{
+            transform: scale(1.1);
+        }
+
+        &-submit{
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            width: 90%;
+            border-radius: 4px;
+            border: 1px solid #293040;
+            color: #fff;
+            background: #293040;
+            transition: all .3s ease-in;
+    
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    &__form {
+        & input[type='text']{
+            text-align: center;
+            border: 2px solid #293040;
+            border-radius: 5px;
+            width: 90%;
+            margin: 20px auto;
+            padding: 5px;
+    
+            &:focus{
+                box-shadow: 5px 5px 10px #888888;            
+            }
+    
+            &:hover {
+                border: 2px solid #293040;
+                box-shadow: 5px 5px 10px #888888;  
+            }
+        }
+    }
+}

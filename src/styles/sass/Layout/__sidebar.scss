@@ -1,0 +1,28 @@
+.sidebar {
+    background: #fff;
+    width: 20%;
+    height: 100vh;
+
+    &__name {
+        padding: 20px 10px;
+        font-weight: 300;
+        text-align: center;
+    }
+
+    & span {
+        text-decoration: underline;
+        font-weight: bold;
+    }
+
+    & h2 {
+        text-align: center;
+    }
+    
+}
+
+@media screen and (max-width: 800px){
+    .sidebar {
+        margin: 0 auto;
+        width: 80%;
+    }
+}
