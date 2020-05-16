@@ -22,6 +22,19 @@ const NewAccount = () => {
                     id='email-signup'
                     name="email"
               />
+              <label htmlFor="password">Password</label>
+              <input 
+                    type="password"
+                    placeholder="Password"
+                    id='password-signup'
+                    name="password"
+              />
+              <input 
+                    type="submit" 
+                    id="signup-btn"
+                    className='newAccountForm__btn'
+                    value="Sign up"
+              />
             </div>
           </form>
         </div>

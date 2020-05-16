@@ -68,3 +68,22 @@
     }
 
 }
+
+@media screen and (max-width: 800px){
+    .loginForm{
+
+        margin-top: 50px;
+        &__fields{
+            & 
+              input[type='email'],
+              input[type='password']{
+
+                width: 90%;
+            }
+        }
+
+        &__btn {
+            width: 50%;
+        }
+    }
+}

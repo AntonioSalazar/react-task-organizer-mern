@@ -62,3 +62,69 @@ body {
     .loginForm__signup p {
       display: inline-block;
       margin-right: 5px; }
+
+@media screen and (max-width: 800px) {
+  .loginForm {
+    margin-top: 50px; }
+    .loginForm__fields input[type='email'],
+    .loginForm__fields input[type='password'] {
+      width: 90%; }
+    .loginForm__btn {
+      width: 50%; } }
+
+.container {
+  width: 100%;
+  margin: 0 auto; }
+
+.newAccountForm {
+  background: #D6D6D6;
+  margin-top: 50px;
+  padding: 20px; }
+  .newAccountForm__title {
+    text-align: center;
+    display: block;
+    padding: 20px 0;
+    font-weight: 600; }
+  .newAccountForm__fields {
+    text-align: center; }
+    .newAccountForm__fields label {
+      display: block;
+      font-size: 18px; }
+    .newAccountForm__fields input[type='text'],
+    .newAccountForm__fields input[type='email'],
+    .newAccountForm__fields input[type='password'] {
+      padding: 5px 20px;
+      margin: 0 auto 30px auto;
+      border: 2px solid transparent;
+      border-radius: 5px;
+      width: 50%; }
+      .newAccountForm__fields input[type='text']:focus,
+      .newAccountForm__fields input[type='email']:focus,
+      .newAccountForm__fields input[type='password']:focus {
+        border: 2px solid #293040;
+        box-shadow: 5px 5px 10px #888888; }
+      .newAccountForm__fields input[type='text']:hover,
+      .newAccountForm__fields input[type='email']:hover,
+      .newAccountForm__fields input[type='password']:hover {
+        border: 2px solid #293040;
+        box-shadow: 5px 5px 10px #888888; }
+  .newAccountForm__btn {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 20%;
+    border-radius: 4px;
+    border: 1px solid #293040;
+    color: #fff;
+    background: #293040;
+    transition: all .3s ease-in; }
+    .newAccountForm__btn:hover {
+      transform: scale(1.1); }
+
+@media screen and (max-width: 800px) {
+  .newAccountForm__fields input[type='text'],
+  .newAccountForm__fields input[type='email'],
+  .newAccountForm__fields input[type='password'] {
+    width: 90%; }
+  .newAccountForm__btn {
+    width: 50%; } }
