@@ -1,10 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const NewAccount = () => {
+
+  const [ newUser, setNewUser ] = useState({
+    username: '',
+    email: '',
+    password: '',
+    passwordConfirm: ''
+  });
+
+  const { username, email, password,passwordConfirm } = newUser;
+
+  const [ error, setError ] = useState(false);
+
+  //Save user input into local state
+  const onChangeSignUp = e => {
+    setNewUser({
+      ...newUser,
+      [e.target.name] : e.target.value
+    })
+  }
+
+  //When the user clicks on the sign up button
+
+  const onSubmitSignUp = e => {
+    e.preventDefault();
+
+    //validate all fields have been filled
+    if(username.trim() === '' || email.trim() === '' || password.trim() === '' || passwordConfirm.trim() === ''){
+      setError(true);
+      return
+    }
+
+    setError(false);
+  }
+
+
     return (
         <div className="container">
           <form 
             className='newAccountForm'
+            onSubmit={onSubmitSignUp}
           >
             <h2 className="newAccountForm__title">Sign Up</h2>
             <div className="newAccountForm__fields">
@@ -14,6 +51,7 @@ const NewAccount = () => {
                     placeholder="User Name"
                     id='username'
                     name="username"
+                    onChange={onChangeSignUp}
               />
               <label htmlFor="email">Email</label>
               <input 
@@ -21,6 +59,8 @@ const NewAccount = () => {
                     placeholder="email"
                     id='email-signup'
                     name="email"
+                    onChange={onChangeSignUp}
+
               />
               <label htmlFor="password">Password</label>
               <input 
@@ -28,6 +68,15 @@ const NewAccount = () => {
                     placeholder="Password"
                     id='password-signup'
                     name="password"
+                    onChange={onChangeSignUp}
+              />
+              <label htmlFor="password">Confirm your password</label>
+              <input 
+                    type="password"
+                    placeholder="Please confirm your password"
+                    id='password-signup-confirm'
+                    name="passwordConfirm"
+                    onChange={onChangeSignUp}
               />
               <input 
                     type="submit" 
@@ -37,6 +86,13 @@ const NewAccount = () => {
               />
             </div>
           </form>
+          <div className="newAccountForm__login">
+            <p>I already have an account 
+            <Link to={"/"} className='newAccountForm__login-link'>
+               Login &rArr;
+            </Link>
+            </p>
+          </div>
         </div>
       );
 }
