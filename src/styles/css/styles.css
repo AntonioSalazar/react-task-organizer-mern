@@ -280,8 +280,13 @@ body {
 
 .listNewTasks__tasks {
   width: 80%;
-  display: inline-block; }
+  display: inline-block;
+  background: blueviolet; }
   .listNewTasks__tasks li {
     list-style: none;
     text-align: center;
-    margin: 10px 0; }
+    margin: 10px 0;
+    background: #fff;
+    padding: 20px;
+    margin-left: 10px;
+    margin-right: 10px; }
