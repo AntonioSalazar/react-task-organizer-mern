@@ -1,0 +1,17 @@
+.listNewTasks {
+    &__title{
+        text-align: center;
+        padding-top: 10px;
+    }
+
+    &__tasks{
+        width: 80%;
+        display: inline-block;
+
+        & li {
+            list-style: none;
+            text-align: center;
+            margin: 10px 0;
+        }
+    }
+}

@@ -1,0 +1,33 @@
+.header {
+    background: #293040;
+    width: 80%;
+    float: right;
+    padding: 30px 0;
+    display: flex;
+    justify-content: space-between;
+    
+    & span {
+        font-weight: 700;
+    }
+    & p {
+        display: inline-block;
+        color: #fff;
+        width: 20%;
+        margin-bottom: 0px;
+        margin-left: 40px;
+    }
+
+    &__nav {
+        display: inline-block;
+        & a {
+            color: #fff;
+            border-bottom: 1px solid transparent;
+            transition: all .3s ease-in;
+            margin-right: 40px;
+            font-size: 14px;
+            &:hover{
+                border-bottom: 1px solid #fff;
+            }
+        }
+    }
+}

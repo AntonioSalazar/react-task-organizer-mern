@@ -2,6 +2,9 @@ import React from 'react';
 
 //components
 import Sidebar from '../Layout/Sidebar';
+import Header from '../Layout/Header';
+import FormNewTask from '../Tasks/FormNewTask';
+import ListNewTask from '../Tasks/ListNewTasks';
 
 const Projects = () => {
     return ( 
@@ -9,9 +12,13 @@ const Projects = () => {
             <Sidebar/>
 
             <div className="main-section">
+                <Header />
                 <main>
-                    <div className="task-container">
+                    <FormNewTask
 
+                    />
+                    <div className="task-container">
+                        <ListNewTask />
                     </div>
                 </main>
             </div>
