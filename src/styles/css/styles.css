@@ -11,6 +11,9 @@ body {
   font-family: 'Nunito Sans', sans-serif;
   background: url("../img/webb.png"), #f0f0f0; }
 
+p {
+  margin-bottom: 0; }
+
 .container {
   width: 100%;
   margin: 0 auto; }
@@ -280,13 +283,73 @@ body {
 
 .listNewTasks__tasks {
   width: 80%;
-  display: inline-block;
-  background: blueviolet; }
+  display: inline-block; }
   .listNewTasks__tasks li {
+    width: 70%;
     list-style: none;
     text-align: center;
     margin: 10px 0;
-    background: #fff;
-    padding: 20px;
-    margin-left: 10px;
-    margin-right: 10px; }
+    background: #cecece;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 4px; }
+    .listNewTasks__tasks li p {
+      display: inline-block;
+      margin-top: 5px; }
+  .listNewTasks__tasks-state {
+    display: inline-block; }
+    .listNewTasks__tasks-state-complete {
+      background: #D4EDDA;
+      color: #155724;
+      padding: 5px;
+      border-radius: 4px;
+      border: 1px solid #155724;
+      transition: all .3s ease-in; }
+      .listNewTasks__tasks-state-complete:hover {
+        transform: scale(1.1); }
+    .listNewTasks__tasks-state-incomplete {
+      background: #F8D7DA;
+      color: #721C24;
+      padding: 5px;
+      border-radius: 4px;
+      border: 1px solid #721C24;
+      transition: all .3s ease-in; }
+      .listNewTasks__tasks-state-incomplete:hover {
+        transform: scale(1.1); }
+  .listNewTasks__tasks-edit {
+    width: 200px;
+    display: flex; }
+    .listNewTasks__tasks-edit-edit {
+      border-radius: 4px;
+      border: 1px solid #293040;
+      color: #fff;
+      background: #293040;
+      transition: all .3s ease-in;
+      width: 45%; }
+      .listNewTasks__tasks-edit-edit:hover {
+        transform: scale(1.1); }
+    .listNewTasks__tasks-edit-delete {
+      border-radius: 4px;
+      width: 45%;
+      margin-left: 20px;
+      border: 2px solid #293040;
+      color: #293040;
+      transition: all .3s ease-in; }
+      .listNewTasks__tasks-edit-delete:hover {
+        transform: scale(1.1); }
+
+.listNewTasks__deleteProject {
+  position: relative;
+  top: 20px;
+  left: 150px;
+  border-radius: 4px;
+  border: 1px solid #293040;
+  color: #fff;
+  background: #293040;
+  transition: all .3s ease-in;
+  padding: 10px; }
+  .listNewTasks__deleteProject:hover {
+    transform: scale(1.1); }

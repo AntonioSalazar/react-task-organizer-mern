@@ -31,7 +31,7 @@ const ListNewTasks = () => {
                     
                 }
 
-                <button type='button'>Delete Project &times;</button>
+                <button type='button' className='listNewTasks__deleteProject'>Delete Project &times;</button>
 
             </ul>
         </Fragment>

@@ -7,16 +7,101 @@
     &__tasks{
         width: 80%;
         display: inline-block;
-        background: blueviolet;
 
         & li {
+            width: 70%;
             list-style: none;
             text-align: center;
             margin: 10px 0;
-            background: #fff;
-            padding: 20px;
-            margin-left: 10px;
-            margin-right: 10px;
+            background: #cecece;
+            padding: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            justify-content: space-between;
+            border-radius: 4px;
+            & p {
+                display: inline-block;
+
+                margin-top: 5px;
+            }
+        }
+
+        &-state {
+            display: inline-block;
+
+            &-complete{
+                background: #D4EDDA;
+                color: #155724;
+                padding: 5px;
+                border-radius: 4px;
+                border: 1px solid #155724;
+                transition: all .3s ease-in;
+
+                &:hover{
+                    transform: scale(1.1);
+                }
+            }
+
+            &-incomplete{
+                background: #F8D7DA;
+                color: #721C24;
+                padding: 5px;
+                border-radius: 4px;
+                border: 1px solid #721C24;
+                transition: all .3s ease-in;
+
+                &:hover{
+                    transform: scale(1.1);
+                }
+            }
+        }
+
+        &-edit{
+            width: 200px;
+            display: flex;
+
+            &-edit{
+                border-radius: 4px;
+                border: 1px solid #293040;
+                color: #fff;
+                background: #293040;
+                transition: all .3s ease-in;
+                width: 45%;
+
+                &:hover{
+                    transform: scale(1.1);
+                }
+            }
+
+            &-delete{
+                border-radius: 4px;
+                width: 45%;
+                margin-left: 20px;
+                border: 2px solid #293040;
+                color: #293040;
+                transition: all .3s ease-in;
+                &:hover{
+                    transform: scale(1.1);
+                }
+            }   
+        }
+    }
+
+    &__deleteProject{
+        position: relative;
+        top: 20px;
+        left: 150px;
+
+        border-radius: 4px;
+        border: 1px solid #293040;
+        color: #fff;
+        background: #293040;
+        transition: all .3s ease-in;
+        padding: 10px;
+
+        &:hover{
+            transform: scale(1.1);
         }
     }
 }

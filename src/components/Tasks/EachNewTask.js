@@ -10,6 +10,7 @@ const EachNewTask = ({task}) => {
                     (
                         <button
                             type='button'
+                            className='listNewTasks__tasks-state-complete'
                         >
                             Complete
                         </button>
@@ -19,6 +20,7 @@ const EachNewTask = ({task}) => {
                 (
                     <button
                         type='button'
+                        className='listNewTasks__tasks-state-incomplete'
                     >
                         Incomplete
                     </button>
@@ -32,9 +34,11 @@ const EachNewTask = ({task}) => {
             >
                 <button
                     type='button'
+                    className='listNewTasks__tasks-edit-edit'
                 >Edit</button>
                 <button
                     type='button'
+                    className='listNewTasks__tasks-edit-delete'
                 >Delete</button>
             </div>
         </li>
