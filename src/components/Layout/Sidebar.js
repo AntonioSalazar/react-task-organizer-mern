@@ -4,6 +4,10 @@ import React from 'react';
 import NewProjectForm from '../Projects/NewProjectForm';
 import ProjectsList from '../Projects/ProjectsList';
 
+
+
+
+
 const Sidebar = () => {
     return ( 
         <aside className='sidebar'>

@@ -1,9 +1,18 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useContext } from 'react';
 
 //Components
 import Error from '../Layout/Error';
 
+//import context
+import ProjectContext from '../../Context/Projects/projectContext';
+
 const NewProjectForm = () => {
+
+    //obtain the state of the form
+    const projectsContext = useContext(ProjectContext);
+
+    const { newProjectForm } = projectsContext;
+    console.log(newProjectForm);
 
     const [ newProject, setNewProject ] = useState({
         newProjectName: ''
@@ -31,7 +40,6 @@ const NewProjectForm = () => {
          }
          setError(false);
 
-         console.log(newProject);
      }
 
     return ( 
@@ -42,24 +50,33 @@ const NewProjectForm = () => {
             >
                 Add new project
             </button>         
-            <form 
-                className='newProjectForm__form'
-                onSubmit={submitNewProject}
-            >
-                <input 
-                    type="text"
-                    name='newProjectName'
-                    placeholder="Name of the Project"
-                    className='newProjectForm__input'
-                    onChange={inputNewProject}
-                    value={newProjectName}
-                /> 
-
-                <input type="submit" className='newProjectForm__btn-submit' value='Add Project'/>
-            </form> 
             {
-                error ? <Error message={'Enter the project name'}/> : null
-            }  
+                newProjectForm 
+                ? (
+                    <form 
+                    className='newProjectForm__form'
+                    onSubmit={submitNewProject}
+                    >
+                        <input 
+                            type="text"
+                            name='newProjectName'
+                            placeholder="Name of the Project"
+                            className='newProjectForm__input'
+                            onChange={inputNewProject}
+                            value={newProjectName}
+                        /> 
+        
+                        <input type="submit" className='newProjectForm__btn-submit' value='Add Project'/>
+                    </form> 
+
+                )
+                : null
+
+            }
+
+                {
+                    error ? <Error message={'Enter the project name'}/> : null
+                }  
         </Fragment>
 
      );

@@ -6,8 +6,12 @@ import Login from './components/auth/Login';
 import NewAccount from './components/auth/NewAccount';
 import Projects from './components/Projects/Projects';
 
+//context
+import ProjectState from './Context/Projects/projectState';
+
 function App() {
   return (
+    <ProjectState>
     <Router>
       <Switch>
         <Route exact path='/' component={Login}/>
@@ -15,6 +19,7 @@ function App() {
         <Route exact path='/projects' component={Projects}/>
       </Switch>
     </Router>
+    </ProjectState>
   );
 }
 

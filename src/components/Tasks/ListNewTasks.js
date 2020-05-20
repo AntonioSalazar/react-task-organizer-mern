@@ -13,7 +13,7 @@ const ListNewTasks = () => {
     ]
 
     return ( 
-        <Fragment className='listNewTasks'>
+        <Fragment >
             <h2 className='listNewTasks__title'>Project: Intranet</h2>
             <ul className='listNewTasks__tasks'>
                 {
