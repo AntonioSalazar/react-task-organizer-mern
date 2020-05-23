@@ -5,7 +5,7 @@ import ProjectContext from './projectContext';
 //reducer
 import projectReducer from './projectReducer';
 //Types
-import { FORM_PROJECT } from '../../types/index';
+import { FORM_NEW_PROJECT } from '../../types/index';
 
 const ProjectState = props => {
     const initialState = {
@@ -21,7 +21,7 @@ const ProjectState = props => {
     //function that will show the new project form
     const showNewProjectForm = () => {
         dispatch({
-            type: FORM_PROJECT
+            type: FORM_NEW_PROJECT
         })
     }
 

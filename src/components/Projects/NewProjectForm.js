@@ -49,7 +49,9 @@ const NewProjectForm = () => {
                     onClick={() => showNewProjectForm()}
             >
                 Add new project
-            </button>         
+            </button>  
+            
+                   
             {
                 newProjectForm 
                 ? (

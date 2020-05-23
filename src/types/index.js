@@ -1,1 +1,1 @@
-export const FORM_PROJECT = 'PROJECT_PROJECT';
+export const FORM_NEW_PROJECT = 'PROJECT_PROJECT';
