@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 //Components
 import EachProjectListLi from './EachProjectLi';
@@ -6,13 +6,22 @@ import EachProjectListLi from './EachProjectLi';
 //Context 
 import ProjectContext from '../../Context/Projects/projectContext';
 
+
 const ProjectsList = () => {
 
     const projectContext = useContext(ProjectContext);
     //taking out the projects from the context
-    const { projects } = projectContext;
+    const { projects,  getProjectsSideBar} = projectContext;
+
+    //get projects when the component loads
+    useEffect(() => {
+        getProjectsSideBar();        
+    }, [])
+
     //checking if the project array is empty
     if (projects.length === 0) return null;
+
+    
 
     return ( 
         <ul className="projectsList">

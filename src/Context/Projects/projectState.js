@@ -5,16 +5,18 @@ import ProjectContext from './projectContext';
 //reducer
 import projectReducer from './projectReducer';
 //Types
-import { FORM_NEW_PROJECT } from '../../types/index';
+import { FORM_NEW_PROJECT, GET_PROJECTS_SIDEBAR } from '../../types/index';
+
 
 const ProjectState = props => {
+    const projects = [
+        {id: 1, name : 'Intranet'},
+        {id: 2, name : 'Deployment'},
+        {id: 3, name : 'Production'}
+    ]
     const initialState = {
         newProjectForm : false,
-        projects : [
-            {id: 1, name : 'Intranet'},
-            {id: 2, name : 'Deployment'},
-            {id: 3, name : 'Production'}
-        ]
+        projects : []
     }
 
     //Dispatch
@@ -30,13 +32,22 @@ const ProjectState = props => {
         })
     }
 
+    //get the projects
+    const getProjectsSideBar = () => {
+        dispatch({
+            type: GET_PROJECTS_SIDEBAR,
+            payload: projects
+        })
+    }
+
 
     return(
         <ProjectContext.Provider
             value={{
                 newProjectForm: state.newProjectForm,
+                projects: state.projects,
                 showNewProjectForm,
-                projects: state.projects
+                getProjectsSideBar
             }}
         >
             {props.children}

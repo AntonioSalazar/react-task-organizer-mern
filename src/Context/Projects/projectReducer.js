@@ -1,4 +1,4 @@
-import { FORM_NEW_PROJECT } from '../../types/index'
+import { FORM_NEW_PROJECT, GET_PROJECTS_SIDEBAR } from '../../types/index'
 
 export default(state, action) => {
     switch(action.type){
@@ -6,6 +6,12 @@ export default(state, action) => {
             return{
                 ...state,
                 newProjectForm: true
+            }
+
+        case GET_PROJECTS_SIDEBAR:
+            return {
+                ...state,
+                projects: action.payload
             }
             
         default:
