@@ -1,20 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 //Components
 import EachProjectListLi from './EachProjectLi';
 
-const projects = [
-    {name : 'Intranet'},
-    {name : 'Deploy'},
-    {name : 'Production'}
-]
+//Context 
+import ProjectContext from '../../Context/Projects/projectContext';
 
 const ProjectsList = () => {
+
+    const projectContext = useContext(ProjectContext);
+    //taking out the projects from the context
+    const { projects } = projectContext;
+    //checking if the project array is empty
+    if (projects.length === 0) return null;
+
     return ( 
         <ul className="projectsList">
             {
                 projects.map( project => (
                     <EachProjectListLi
+                        key={project.id}
                         project={project}
                     />
                 ))

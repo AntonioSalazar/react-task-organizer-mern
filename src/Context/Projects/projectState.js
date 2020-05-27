@@ -9,7 +9,12 @@ import { FORM_NEW_PROJECT } from '../../types/index';
 
 const ProjectState = props => {
     const initialState = {
-        newProjectForm : false
+        newProjectForm : false,
+        projects : [
+            {id: 1, name : 'Intranet'},
+            {id: 2, name : 'Deployment'},
+            {id: 3, name : 'Production'}
+        ]
     }
 
     //Dispatch
@@ -30,7 +35,8 @@ const ProjectState = props => {
         <ProjectContext.Provider
             value={{
                 newProjectForm: state.newProjectForm,
-                showNewProjectForm
+                showNewProjectForm,
+                projects: state.projects
             }}
         >
             {props.children}
