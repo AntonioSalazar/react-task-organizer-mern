@@ -11,7 +11,7 @@ const NewProjectForm = () => {
     //obtain the state of the form
     const projectsContext = useContext(ProjectContext);
 
-    const { newProjectForm, showNewProjectForm } = projectsContext;
+    const { newProjectForm, showNewProjectForm, addNewProject } = projectsContext;
 
     const [ newProject, setNewProject ] = useState({
         newProjectName: ''
@@ -38,6 +38,9 @@ const NewProjectForm = () => {
              return
          }
          setError(false);
+
+         // add to the state
+         addNewProject(newProject)
 
      }
 

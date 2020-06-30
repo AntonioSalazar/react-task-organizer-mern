@@ -6,7 +6,7 @@ const EachProjectListLi = ({project}) => {
             <button
                 type='button'
                 className='projectsList__btn btn btn-blank'
-            >{project.name}</button>
+            >{project.newProjectName}</button>
         </li>
      );
 }
