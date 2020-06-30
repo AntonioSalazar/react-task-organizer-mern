@@ -11,7 +11,7 @@ const NewProjectForm = () => {
     //obtain the state of the form
     const projectsContext = useContext(ProjectContext);
 
-    const { newProjectForm, showNewProjectForm, addNewProject } = projectsContext;
+    const { newProjectForm, errorForm, showNewProjectForm, addNewProject, showError } = projectsContext;
 
     const [ newProject, setNewProject ] = useState({
         newProjectName: ''
@@ -34,13 +34,18 @@ const NewProjectForm = () => {
 
          //check input has been filled
          if (newProjectName.trim() === '') {
-             setError(true)
+             showError(true)
              return
          }
-         setError(false);
+         showError(false);
 
          // add to the state
          addNewProject(newProject)
+
+         //form to blank
+         setNewProject({
+             newProjectName: ''
+         })
 
      }
 
@@ -80,7 +85,7 @@ const NewProjectForm = () => {
             }
 
                 {
-                    error ? <Error message={'Enter the project name'}/> : null
+                    errorForm ? <Error message={'Enter the project name'}/> : null
                 }  
         </Fragment>
 

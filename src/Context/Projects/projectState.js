@@ -6,18 +6,19 @@ import ProjectContext from './projectContext';
 //reducer
 import projectReducer from './projectReducer';
 //Types
-import { FORM_NEW_PROJECT, GET_PROJECTS_SIDEBAR, ADD_NEW_PROJECT } from '../../types/index';
+import { FORM_NEW_PROJECT, GET_PROJECTS_SIDEBAR, ADD_NEW_PROJECT, VALIDATE_FORM } from '../../types/index';
 
 
 const ProjectState = props => {
     const projects = [
-        {id: 1, name : 'Intranet'},
-        {id: 2, name : 'Deployment'},
-        {id: 3, name : 'Production'}
+        {id: 1, newProjectName : 'Intranet'},
+        {id: 2, newProjectName : 'Deployment'},
+        {id: 3, newProjectName : 'Production'}
     ]
     const initialState = {
         newProjectForm : false,
-        projects : []
+        projects : [],
+        errorForm : false
     }
 
     //Dispatch
@@ -52,15 +53,24 @@ const ProjectState = props => {
         })
     }
 
+    //VALIDATE FORM
+    const showError = () => {
+        dispatch({
+            type: VALIDATE_FORM
+        })
+    }
+
 
     return(
         <ProjectContext.Provider
             value={{
                 newProjectForm: state.newProjectForm,
                 projects: state.projects,
+                errorForm : state.errorForm,
                 showNewProjectForm,
                 getProjectsSideBar,
-                addNewProject
+                addNewProject,
+                showError
             }}
         >
             {props.children}
