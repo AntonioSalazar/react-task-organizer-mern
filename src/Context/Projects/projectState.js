@@ -10,7 +10,8 @@ import { FORM_NEW_PROJECT,
          GET_PROJECTS_SIDEBAR, 
          ADD_NEW_PROJECT, 
          VALIDATE_FORM,
-         GET_SELECTED_PROJECT
+         GET_SELECTED_PROJECT,
+         DELETE_PROJECT
         } from '../../types/index';
 
 
@@ -24,7 +25,6 @@ const ProjectState = props => {
         newProjectForm : false,
         projects : [],
         errorForm : false,
-        currentProject : null,
         selectedProject: null
     }
 
@@ -76,6 +76,15 @@ const ProjectState = props => {
         })
     }
 
+    // delete project
+
+    const deleteCurrentProject = projectId => {
+        dispatch({
+            type: DELETE_PROJECT,
+            payload: projectId
+        })
+    }
+
 
     return(
         <ProjectContext.Provider
@@ -85,11 +94,13 @@ const ProjectState = props => {
                 projects: state.projects,
                 errorForm : state.errorForm,
                 selectedProject: state.selectedProject,
+
                 showNewProjectForm,
                 getProjectsSideBar,
                 addNewProject,
                 showError,
-                getSelectedProject
+                getSelectedProject,
+                deleteCurrentProject
             }}
         >
             {props.children}

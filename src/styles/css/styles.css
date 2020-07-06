@@ -277,6 +277,9 @@ p {
       .newTaskForm__input-btn:hover {
         transform: scale(1.1); }
 
+.listNewTasks__no-project {
+  text-align: center; }
+
 .listNewTasks__title {
   text-align: center;
   padding-top: 10px; }

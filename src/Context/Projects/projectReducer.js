@@ -3,8 +3,9 @@ import {
     GET_PROJECTS_SIDEBAR, 
     ADD_NEW_PROJECT, 
     VALIDATE_FORM,
-    GET_SELECTED_PROJECT } from '../../types/index'
-import { act } from 'react-dom/test-utils'
+    GET_SELECTED_PROJECT,
+    DELETE_PROJECT
+} from '../../types/index'
 
 export default(state, action) => {
     switch(action.type){
@@ -39,6 +40,13 @@ export default(state, action) => {
             return {
                 ...state,
                 selectedProject: state.projects.filter(project => project.id === action.payload)
+            }
+        
+        case DELETE_PROJECT:
+            return{
+                ...state,
+                projects: state.projects.filter(project => project.id !== action.payload),
+                selectedProject: null
             }
         default:
             return state
