@@ -6,7 +6,12 @@ import ProjectContext from './projectContext';
 //reducer
 import projectReducer from './projectReducer';
 //Types
-import { FORM_NEW_PROJECT, GET_PROJECTS_SIDEBAR, ADD_NEW_PROJECT, VALIDATE_FORM } from '../../types/index';
+import { FORM_NEW_PROJECT,
+         GET_PROJECTS_SIDEBAR, 
+         ADD_NEW_PROJECT, 
+         VALIDATE_FORM,
+         GET_SELECTED_PROJECT
+        } from '../../types/index';
 
 
 const ProjectState = props => {
@@ -18,7 +23,9 @@ const ProjectState = props => {
     const initialState = {
         newProjectForm : false,
         projects : [],
-        errorForm : false
+        errorForm : false,
+        currentProject : null,
+        selectedProject: null
     }
 
     //Dispatch
@@ -60,17 +67,29 @@ const ProjectState = props => {
         })
     }
 
+    // get selected project
+
+    const getSelectedProject = projectId => {
+        dispatch({
+            type: GET_SELECTED_PROJECT,
+            payload: projectId
+        })
+    }
+
 
     return(
         <ProjectContext.Provider
             value={{
                 newProjectForm: state.newProjectForm,
+                currentProject: state.currentProject,
                 projects: state.projects,
                 errorForm : state.errorForm,
+                selectedProject: state.selectedProject,
                 showNewProjectForm,
                 getProjectsSideBar,
                 addNewProject,
-                showError
+                showError,
+                getSelectedProject
             }}
         >
             {props.children}

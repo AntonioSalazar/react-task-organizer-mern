@@ -1,4 +1,10 @@
-import { FORM_NEW_PROJECT, GET_PROJECTS_SIDEBAR, ADD_NEW_PROJECT, VALIDATE_FORM } from '../../types/index'
+import { 
+    FORM_NEW_PROJECT, 
+    GET_PROJECTS_SIDEBAR, 
+    ADD_NEW_PROJECT, 
+    VALIDATE_FORM,
+    GET_SELECTED_PROJECT } from '../../types/index'
+import { act } from 'react-dom/test-utils'
 
 export default(state, action) => {
     switch(action.type){
@@ -27,6 +33,12 @@ export default(state, action) => {
             return{
                 ...state,
                 errorForm : true
+            }
+        
+        case GET_SELECTED_PROJECT:
+            return {
+                ...state,
+                selectedProject: state.projects.filter(project => project.id === action.payload)
             }
         default:
             return state
