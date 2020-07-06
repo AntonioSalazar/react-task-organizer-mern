@@ -210,6 +210,12 @@ p {
   list-style: none;
   margin-left: 20px; }
 
+.projectsList__no-project {
+  display: inline-block;
+  width: 80%;
+  margin-left: 30px;
+  text-align: center; }
+
 .header {
   background: #293040;
   width: 80%;

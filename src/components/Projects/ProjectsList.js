@@ -19,7 +19,7 @@ const ProjectsList = () => {
     }, [])
 
     //checking if the project array is empty
-    if (projects.length === 0) return null;
+    if (projects.length === 0) return <p className='projectsList__no-project'>You dont have any project, you can start by adding one</p>;
 
     
 
