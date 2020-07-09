@@ -18,7 +18,7 @@ const NewProjectForm = () => {
     });
 
     const { newProjectName } = newProject;
-    const [ error, setError ] = useState(false);
+
 
     //saving the name of the new project
     const inputNewProject = e => {

@@ -2,7 +2,8 @@ import React, { useReducer } from 'react';
 
 //Types
 import {
-    TASKS_PROJECT
+    TASKS_PROJECT,
+    ADD_NEW_TASK
 } from '../../types/index'
 
 
@@ -26,7 +27,8 @@ const TaskState = props => {
             { name: 'Meeting 8', state: false, projectId: 2},
             { name: 'Meeting 9', state: true, projectId: 3},
         ],
-        projectTasks: null
+        projectTasks: null,
+        errorForm: false
     }
 
     //Dispatch and state --- takes the reducer and the initial state
@@ -42,14 +44,24 @@ const TaskState = props => {
         })
     }
 
+    //Function to add new tasks
+    const addNewTask = task => {
+        dispatch({
+            type: ADD_NEW_TASK, 
+            payload: task
+        })
+    }
+
 
     return (
         <TaskContext.Provider
             value={{
                 tasks: state.tasks,
                 projectTasks: state.projectTasks,
+                errorForm : state.errorForm,
 
-                getTasks
+                getTasks,
+                addNewTask
             }}
         >
             {props.children}
