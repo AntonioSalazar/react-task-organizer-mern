@@ -2,6 +2,7 @@ import React, { Fragment, useContext } from 'react';
 
 //import context
 import ProjectContext from '../../Context/Projects/projectContext';
+import TaskContext from '../../Context/Tasks/TaskContext';
 
 //Components 
 import EachNewTask from './EachNewTask';
@@ -12,7 +13,11 @@ const ListNewTasks = () => {
     const projectsContext = useContext(ProjectContext);
 
     const { selectedProject, deleteCurrentProject } = projectsContext;
-    
+   
+    //Get the tasks for each project
+    const taskContext = useContext(TaskContext)
+    const { projectTasks } = taskContext  
+
     //if there is no selected project
     if(!selectedProject) return <h2 className='listNewTasks__no-project' >Select a project</h2>
 
@@ -21,7 +26,6 @@ const ListNewTasks = () => {
 
 
 
-    const newTasksTest = []
 
 
     return ( 
@@ -29,14 +33,14 @@ const ListNewTasks = () => {
             <h2 className='listNewTasks__title'>Project: {currentProject.newProjectName}</h2>
             <ul className='listNewTasks__tasks'>
                 {
-                    newTasksTest.length === 0
+                    projectTasks.length === 0
                     ? (<li><p>There are no tasks</p></li>)
 
                     :
-                    newTasksTest.map(task => (
+                    projectTasks.map(task => (
                         <EachNewTask
                             className='listNewTasks__tasks'
-                            key={task.id}
+                            key={task.name}
                             task={task}
                         />
                     ))
