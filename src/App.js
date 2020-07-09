@@ -13,15 +13,15 @@ import TaskState from './Context/Tasks/TaskState';
 function App() {
   return (
     <ProjectState>
-    <TaskState>
-    <Router>
-      <Switch>
-        <Route exact path='/' component={Login}/>
-        <Route exact path='/sign-up' component={NewAccount}/>
-        <Route exact path='/projects' component={Projects}/>
-      </Switch>
-    </Router>
-    </TaskState>
+      <TaskState>
+        <Router>
+          <Switch>
+            <Route exact path='/' component={Login}/>
+            <Route exact path='/sign-up' component={NewAccount}/>
+            <Route exact path='/projects' component={Projects}/>
+          </Switch>
+        </Router>
+      </TaskState>
     </ProjectState>
   );
 }

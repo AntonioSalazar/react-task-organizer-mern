@@ -21,11 +21,7 @@ const ListNewTasks = () => {
 
 
 
-    const newTasksTest = [
-        { name: 'Meeting 1', id: 1, state: true},
-        { name: 'Meeting 2', id: 2, state: false},
-        { name: 'Meeting 3', id: 3, state: true}
-    ]
+    const newTasksTest = []
 
 
     return ( 
