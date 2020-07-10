@@ -14,7 +14,7 @@ const FormNewTask = () => {
 
     // extracting the error from the context state
     const taskContext = useContext(TaskContext)
-    const { validateTask, addNewTask, errorForm } = taskContext
+    const { validateTask, addNewTask, errorForm, getTasks } = taskContext
     
     //state of the form input 
     const [ newTask, setNewTask ] = useState({
@@ -52,8 +52,17 @@ const FormNewTask = () => {
         //add the new task to the state
         newTask.projectId = currentProject.id;
         newTask.state = false;
-        console.log(currentProject);
+       
         addNewTask(newTask);
+
+        //get and filter the tasks of selceted project
+
+        getTasks(currentProject.id)
+
+        //form to blanck after adding a task
+        setNewTask({
+            name: ''
+        })
     }
      
     return ( 
@@ -76,7 +85,7 @@ const FormNewTask = () => {
                     <input type="submit" value='Add task' className='newTaskForm__input-btn'/>
                 </div>
             {
-                errorForm ? <p message={'You need to enter a task'}/> : null
+                errorForm ? <Error message={'You need to enter a task'}/> : null
             }
             </form>
 

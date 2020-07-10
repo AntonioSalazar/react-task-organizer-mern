@@ -4,6 +4,7 @@ import {
     ADD_NEW_TASK,
     VALIDATE_TASK_FORM
 } from '../../types/index'
+import { findAllByDisplayValue } from '@testing-library/react'
 
 
 export default(state, action) => {
@@ -18,7 +19,8 @@ export default(state, action) => {
         case ADD_NEW_TASK:
             return{
                 ...state,
-                tasks: [...state.tasks, action.payload]
+                tasks: [...state.tasks, action.payload],
+                errorForm: false
             }
         
         case VALIDATE_TASK_FORM:
