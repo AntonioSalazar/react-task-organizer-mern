@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 
+//dependencies
+
 //Context
 import TaskContext from '../../Context/Tasks/TaskContext';
 import ProjectContext from '../../Context/Projects/projectContext';
@@ -16,7 +18,7 @@ const EachNewTask = ({task}) => {
 
     //function that gets executed when a user click on the delete button of a task
     const deleteSelectedTask = id => {
-        console.log(selectedProject)
+
         deleteTask(id);
         getTasks(selectedProject[0].id)
     }

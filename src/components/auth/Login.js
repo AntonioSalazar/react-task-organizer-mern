@@ -7,7 +7,7 @@ const Login = () => {
         email: "",
         password: ""
     });
-    const [ error, setError] = useState(false);
+    const [setError] = useState(false);
 
     const { email, password } = userInfo;
     //Saving users input into the local state

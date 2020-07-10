@@ -19,7 +19,7 @@ export default(state, action) => {
         case ADD_NEW_TASK:
             return{
                 ...state,
-                tasks: [...state.tasks, action.payload],
+                tasks: [action.payload, ...state.tasks],
                 errorForm: false
             }
         

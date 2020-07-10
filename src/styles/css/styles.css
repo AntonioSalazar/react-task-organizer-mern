@@ -366,3 +366,6 @@ p {
   padding: 10px; }
   .listNewTasks__deleteProject:hover {
     transform: scale(1.1); }
+
+.task-enter {
+  opacity: 0; }

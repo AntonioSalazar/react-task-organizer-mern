@@ -12,7 +12,7 @@ const NewAccount = () => {
 
   const { username, email, password,passwordConfirm } = newUser;
 
-  const [ error, setError ] = useState(false);
+  const [ setError ] = useState(false);
 
   //Save user input into local state
   const onChangeSignUp = e => {
