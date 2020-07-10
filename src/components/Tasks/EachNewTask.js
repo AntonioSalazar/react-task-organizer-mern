@@ -1,6 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+//Context
+import TaskContext from '../../Context/Tasks/TaskContext';
+import ProjectContext from '../../Context/Projects/projectContext';
 
 const EachNewTask = ({task}) => {
+
+    //Obtain functions from the Task Context
+    const taskContext = useContext(TaskContext)
+    const { deleteTask, getTasks } = taskContext
+
+    //obtain the state if there is an active project
+    const projectsContext = useContext(ProjectContext);
+    const { selectedProject } = projectsContext;
+
+    //function that gets executed when a user click on the delete button of a task
+    const deleteSelectedTask = id => {
+        console.log(selectedProject)
+        deleteTask(id);
+        getTasks(selectedProject[0].id)
+    }
+
     return ( 
         <li className='listNewTasks__tasks-li'>
             <p>{task.name}</p>
@@ -15,7 +35,7 @@ const EachNewTask = ({task}) => {
                             Complete
                         </button>
                     )
-                : 
+                :  
 
                 (
                     <button
@@ -39,6 +59,7 @@ const EachNewTask = ({task}) => {
                 <button
                     type='button'
                     className='listNewTasks__tasks-edit-delete'
+                    onClick={()=>deleteSelectedTask(task.id)}
                 >Delete</button>
             </div>
         </li>

@@ -2,9 +2,9 @@
 import {
     TASKS_PROJECT,
     ADD_NEW_TASK,
-    VALIDATE_TASK_FORM
+    VALIDATE_TASK_FORM,
+    DELETE_TASK
 } from '../../types/index'
-import { findAllByDisplayValue } from '@testing-library/react'
 
 
 export default(state, action) => {
@@ -29,6 +29,11 @@ export default(state, action) => {
                 errorForm : true
             }
 
+        case DELETE_TASK:
+            return{
+                ...state,
+                tasks: state.tasks.filter(task => task.id !== action.payload)
+            }
         default:
             return state
     }

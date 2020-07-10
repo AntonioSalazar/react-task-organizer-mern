@@ -4,7 +4,8 @@ import React, { useReducer } from 'react';
 import {
     TASKS_PROJECT,
     ADD_NEW_TASK,
-    VALIDATE_TASK_FORM
+    VALIDATE_TASK_FORM,
+    DELETE_TASK
 } from '../../types/index'
 
 
@@ -17,16 +18,16 @@ const TaskState = props => {
 
     const taskInitialState = {
         tasks: [
-            { name: 'Meeting 1', state: true, projectId: 1},
-            { name: 'Meeting 10', state: true, projectId: 1},
-            { name: 'Meeting 2', state: false, projectId: 2},
-            { name: 'Meeting 3', state: true, projectId: 3},
-            { name: 'Meeting 4', state: true, projectId: 1},
-            { name: 'Meeting 5', state: false, projectId: 2},
-            { name: 'Meeting 6', state: true, projectId: 3},
-            { name: 'Meeting 7', state: true, projectId: 1},
-            { name: 'Meeting 8', state: false, projectId: 2},
-            { name: 'Meeting 9', state: true, projectId: 3},
+            {id: 1, name: 'Meeting 1', state: true, projectId: 1},
+            {id: 2, name: 'Meeting 10', state: true, projectId: 1},
+            {id: 3, name: 'Meeting 2', state: false, projectId: 2},
+            {id: 4, name: 'Meeting 3', state: true, projectId: 3},
+            {id: 5, name: 'Meeting 4', state: true, projectId: 1},
+            {id: 6, name: 'Meeting 5', state: false, projectId: 2},
+            {id: 7, name: 'Meeting 6', state: true, projectId: 3},
+            {id: 8, name: 'Meeting 7', state: true, projectId: 1},
+            {id: 9, name: 'Meeting 8', state: false, projectId: 2},
+            {id: 10, name: 'Meeting 9', state: true, projectId: 3},
         ],
         projectTasks: null,
         errorForm: false
@@ -60,6 +61,14 @@ const TaskState = props => {
         })
     }
 
+    //DELETE A TASK
+    const deleteTask = id => {
+        dispatch({
+            type: DELETE_TASK,
+            payload: id
+        })
+    }
+
 
     return (
         <TaskContext.Provider
@@ -70,7 +79,8 @@ const TaskState = props => {
 
                 getTasks,
                 addNewTask,
-                validateTask
+                validateTask,
+                deleteTask
             }}
         >
             {props.children}

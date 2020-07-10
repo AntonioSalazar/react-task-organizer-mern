@@ -8,3 +8,4 @@ export const DELETE_PROJECT = "DELETE_PROJECT";
 export const TASKS_PROJECT = "TASKS_PROJECT";
 export const ADD_NEW_TASK = "ADD_NEW_TASK";
 export const VALIDATE_TASK_FORM = 'VALIDATE_TASK_FORM';
+export const DELETE_TASK = 'DELETE_TASK';
