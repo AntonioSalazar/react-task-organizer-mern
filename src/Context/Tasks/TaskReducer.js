@@ -1,7 +1,8 @@
 //Types
 import {
     TASKS_PROJECT,
-    ADD_NEW_TASK
+    ADD_NEW_TASK,
+    VALIDATE_TASK_FORM
 } from '../../types/index'
 
 
@@ -18,6 +19,12 @@ export default(state, action) => {
             return{
                 ...state,
                 tasks: [...state.tasks, action.payload]
+            }
+        
+        case VALIDATE_TASK_FORM:
+            return{
+                ...state,
+                errorForm : true
             }
 
         default:

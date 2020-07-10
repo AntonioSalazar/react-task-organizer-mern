@@ -3,7 +3,8 @@ import React, { useReducer } from 'react';
 //Types
 import {
     TASKS_PROJECT,
-    ADD_NEW_TASK
+    ADD_NEW_TASK,
+    VALIDATE_TASK_FORM
 } from '../../types/index'
 
 
@@ -52,16 +53,24 @@ const TaskState = props => {
         })
     }
 
+    //VALIDATE and shows an error in case if necessary
+    const validateTask =() => {
+        dispatch({
+            type: VALIDATE_TASK_FORM
+        })
+    }
+
 
     return (
         <TaskContext.Provider
             value={{
                 tasks: state.tasks,
                 projectTasks: state.projectTasks,
-                errorForm : state.errorForm,
+                errorForm: state.errorForm,
 
                 getTasks,
-                addNewTask
+                addNewTask,
+                validateTask
             }}
         >
             {props.children}
