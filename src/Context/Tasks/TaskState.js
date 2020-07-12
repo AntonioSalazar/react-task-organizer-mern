@@ -6,7 +6,8 @@ import {
     ADD_NEW_TASK,
     VALIDATE_TASK_FORM,
     DELETE_TASK,
-    TASK_STATE
+    TASK_STATE,
+    CURRENT_TASK
 } from '../../types/index'
 
 
@@ -31,7 +32,8 @@ const TaskState = props => {
             {id: 10, name: 'Meeting 9', state: true, projectId: 3},
         ],
         projectTasks: null,
-        errorForm: false
+        errorForm: false,
+        selectedTask : null
     }
 
     //Dispatch and state --- takes the reducer and the initial state
@@ -78,6 +80,14 @@ const TaskState = props => {
         })
     }
 
+    //EXTRACTS A TASK FOR US TO EDIT
+    const saveCurrentTask = task => {
+        dispatch({
+            type: CURRENT_TASK,
+            payload: task
+        })
+    }
+
 
     return (
         <TaskContext.Provider
@@ -85,12 +95,14 @@ const TaskState = props => {
                 tasks: state.tasks,
                 projectTasks: state.projectTasks,
                 errorForm: state.errorForm,
+                selectedTask: state.selectedTask,
 
                 getTasks,
                 addNewTask,
                 validateTask,
                 deleteTask,
-                changeTaskState
+                changeTaskState,
+                saveCurrentTask
             }}
         >
             {props.children}

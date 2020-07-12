@@ -10,3 +10,4 @@ export const ADD_NEW_TASK = "ADD_NEW_TASK";
 export const VALIDATE_TASK_FORM = 'VALIDATE_TASK_FORM';
 export const DELETE_TASK = 'DELETE_TASK';
 export const TASK_STATE = 'TASK_STATE';
+export const CURRENT_TASK = 'CURRENT_TASK';

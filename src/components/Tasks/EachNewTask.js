@@ -10,7 +10,7 @@ const EachNewTask = ({task}) => {
 
     //Obtain functions from the Task Context
     const taskContext = useContext(TaskContext)
-    const { deleteTask, getTasks, changeTaskState } = taskContext
+    const { deleteTask, getTasks, changeTaskState, saveCurrentTask } = taskContext
 
     //obtain the state if there is an active project
     const projectsContext = useContext(ProjectContext);
@@ -34,6 +34,11 @@ const EachNewTask = ({task}) => {
             task.state = true
         }
         changeTaskState(task)
+    }
+
+    // adds selected task to the state when the user wants to edit it
+    const selectTask = task => {
+        saveCurrentTask(task)
     }
 
     return ( 
@@ -72,6 +77,7 @@ const EachNewTask = ({task}) => {
                 <button
                     type='button'
                     className='listNewTasks__tasks-edit-edit'
+                    onClick={() => selectTask(task)}
                 >Edit</button>
                 <button
                     type='button'
