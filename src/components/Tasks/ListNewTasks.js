@@ -28,9 +28,6 @@ const ListNewTasks = () => {
     const [currentProject] = selectedProject
 
 
-
-
-
     return ( 
         <Fragment >
             <h2 className='listNewTasks__title'>Project: {currentProject.newProjectName}</h2>
