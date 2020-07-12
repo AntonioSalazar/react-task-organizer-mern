@@ -14,7 +14,7 @@ const FormNewTask = () => {
 
     // extracting the error from the context state
     const taskContext = useContext(TaskContext)
-    const { validateTask, addNewTask, errorForm, getTasks, selectedTask, updateSelectedTask } = taskContext
+    const { validateTask, addNewTask, errorForm, getTasks, selectedTask, updateSelectedTask, cleanTask } = taskContext
 
     //This useEffect will detect when a task gets selected
     useEffect(() => {
@@ -68,6 +68,9 @@ const FormNewTask = () => {
         } else {
             //update existing task
             updateSelectedTask(newTask)
+
+            //delete selected task from the state
+            cleanTask()
         }
         
         // // pass the validation

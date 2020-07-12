@@ -17,7 +17,6 @@ const EachNewTask = ({task}) => {
     const { selectedProject } = projectsContext;
 
     //extract the project
-    console.log(selectedProject);
     const [ currentProject ] = selectedProject
 
     //function that gets executed when a user click on the delete button of a task

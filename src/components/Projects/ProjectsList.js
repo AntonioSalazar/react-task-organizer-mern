@@ -15,7 +15,9 @@ const ProjectsList = () => {
 
     //get projects when the component loads
     useEffect(() => {
-        getProjectsSideBar();        
+        getProjectsSideBar();     
+        
+        //eslint-disable-next-line
     }, [])
 
     //checking if the project array is empty
