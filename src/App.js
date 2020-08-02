@@ -9,6 +9,7 @@ import Projects from './components/Projects/Projects';
 //context
 import ProjectState from './Context/Projects/projectState';
 import TaskState from './Context/Tasks/TaskState';
+import AlertState from './Context/Alerts/alertState';
 
 function App() {
   return (
