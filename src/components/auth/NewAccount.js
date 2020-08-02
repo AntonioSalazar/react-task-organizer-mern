@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import AlertContext from '../../Context/Alerts/alertContext';
 
 const NewAccount = () => {
+
+  //extract the values from the context
+  const alertContext = useContext(AlertContext);
+  const { alert, showAlert} = alertContext;
 
   const [ newUser, setNewUser ] = useState({
     username: '',
@@ -12,7 +17,6 @@ const NewAccount = () => {
 
   const { username, email, password,passwordConfirm } = newUser;
 
-  const [ setError ] = useState(false);
 
   //Save user input into local state
   const onChangeSignUp = e => {
@@ -29,16 +33,31 @@ const NewAccount = () => {
 
     //validate all fields have been filled
     if(username.trim() === '' || email.trim() === '' || password.trim() === '' || passwordConfirm.trim() === ''){
-      setError(true);
+      showAlert("All the fields are required", "alert-error")
       return
     }
 
-    setError(false);
+    // Password must be at least 6 characters long
+    if(password.length < 6) {
+      showAlert("Your password must have at least 6 characters", "alert-error")
+      return
+    }
+
+    // confirmation password should be the same
+    if(password !== passwordConfirm) {
+      showAlert("Your password confirmation does not match your password", "alert-error")
+      return
+    }
   }
 
 
     return (
         <div className="container">
+          {
+            alert 
+          ? (<div className={`alert ${alert.category}`} >{alert.msg}</div>)  
+                : null
+          }
           <form 
             className='newAccountForm'
             onSubmit={onSubmitSignUp}

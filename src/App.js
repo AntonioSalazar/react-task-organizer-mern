@@ -15,13 +15,15 @@ function App() {
   return (
     <ProjectState>
       <TaskState>
-        <Router>
-          <Switch>
-            <Route exact path='/' component={Login}/>
-            <Route exact path='/sign-up' component={NewAccount}/>
-            <Route exact path='/projects' component={Projects}/>
-          </Switch>
-        </Router>
+        <AlertState>
+          <Router>
+            <Switch>
+              <Route exact path='/' component={Login}/>
+              <Route exact path='/sign-up' component={NewAccount}/>
+              <Route exact path='/projects' component={Projects}/>
+            </Switch>
+          </Router>
+        </AlertState>
       </TaskState>
     </ProjectState>
   );

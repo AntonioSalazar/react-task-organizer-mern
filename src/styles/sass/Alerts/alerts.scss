@@ -1,0 +1,14 @@
+.alert{
+    text-align: center;
+    top: 30px;
+    right: 10px;
+   
+    &-ok {
+        background-color: rgb(109, 211, 109);
+        color: rgb(2, 103, 2);
+    }
+    &-error {
+        background-color: rgb(230, 78, 78);
+        color: #fff;
+    }
+}

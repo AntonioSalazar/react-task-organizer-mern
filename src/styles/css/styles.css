@@ -378,3 +378,14 @@ p {
   .task-exit-active {
     opacity: 0;
     transition: opacity 200ms; }
+
+.alert {
+  text-align: center;
+  top: 30px;
+  right: 10px; }
+  .alert-ok {
+    background-color: #6dd36d;
+    color: #026702; }
+  .alert-error {
+    background-color: #e64e4e;
+    color: #fff; }
