@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 //components
 import Error from '../Layout/Error'
 
@@ -14,7 +14,18 @@ const FormNewTask = () => {
 
     // extracting the error from the context state
     const taskContext = useContext(TaskContext)
-    const { validateTask, addNewTask, errorForm, getTasks } = taskContext
+    const { validateTask, addNewTask, errorForm, getTasks, selectedTask, updateSelectedTask, cleanTask } = taskContext
+
+    //This useEffect will detect when a task gets selected
+    useEffect(() => {
+        if(selectedTask !== null) {
+            setNewTask(selectedTask)
+        } else {
+            setNewTask({
+                name: ''
+            })
+        }
+    }, [selectedTask])
     
     //state of the form input 
     const [ newTask, setNewTask ] = useState({
@@ -45,15 +56,27 @@ const FormNewTask = () => {
             validateTask(true)
             return
         }
-        
-        // pass the validation
-        validateTask(false)
 
-        //add the new task to the state
-        newTask.projectId = currentProject.id;
-        newTask.state = false;
-       
-        addNewTask(newTask);
+        //check if its an task edit or a new task
+        if(selectedTask === null ){
+            //new task       
+            //add the new task to the state
+            newTask.projectId = currentProject.id;
+            newTask.state = false;
+        
+            addNewTask(newTask);
+        } else {
+            //update existing task
+            updateSelectedTask(newTask)
+
+            //delete selected task from the state
+            cleanTask()
+        }
+        
+        // // pass the validation
+        // validateTask(false)
+
+
 
         //get and filter the tasks of selceted project
 
@@ -82,7 +105,7 @@ const FormNewTask = () => {
                             value={name}
                     />
 
-                    <input type="submit" value='Add task' className='newTaskForm__input-btn'/>
+                    <input type="submit" value={selectedTask ? 'Edit Task' : 'Add a new task'} className='newTaskForm__input-btn'/>
                 </div>
             {
                 errorForm ? <Error message={'You need to enter a task'}/> : null

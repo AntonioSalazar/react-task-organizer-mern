@@ -3,8 +3,13 @@ import {
     TASKS_PROJECT,
     ADD_NEW_TASK,
     VALIDATE_TASK_FORM,
-    DELETE_TASK
+    DELETE_TASK,
+    TASK_STATE,
+    CURRENT_TASK,
+    UPDATE_TASK,
+    CLEAN_TASK
 } from '../../types/index'
+
 
 
 export default(state, action) => {
@@ -19,7 +24,7 @@ export default(state, action) => {
         case ADD_NEW_TASK:
             return{
                 ...state,
-                tasks: [action.payload, ...state.tasks],
+                tasks: [ ...state.tasks, action.payload],
                 errorForm: false
             }
         
@@ -34,6 +39,26 @@ export default(state, action) => {
                 ...state,
                 tasks: state.tasks.filter(task => task.id !== action.payload)
             }
+        case UPDATE_TASK:
+        case TASK_STATE:
+            return{
+                ...state,
+                tasks: state.tasks.map(task => task.id === action.payload.id? action.payload :task)
+            }
+
+        case CURRENT_TASK:
+            return{
+                ...state,
+                selectedTask: action.payload
+            }
+
+        case CLEAN_TASK: {
+            return{
+                ...state,
+                selectedTask: null
+            }
+        }
+
         default:
             return state
     }

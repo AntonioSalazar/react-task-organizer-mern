@@ -369,3 +369,12 @@ p {
 
 .task-enter {
   opacity: 0; }
+  .task-enter-active {
+    opacity: 1;
+    transition: opacity 200ms; }
+
+.task-exit {
+  opacity: 1; }
+  .task-exit-active {
+    opacity: 0;
+    transition: opacity 200ms; }
