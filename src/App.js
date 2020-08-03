@@ -13,6 +13,7 @@ import AlertState from './Context/Alerts/alertState';
 import AuthState from './Context/Auth/authState';
 
 function App() {
+
   return (
     <ProjectState>
       <TaskState>

@@ -1,12 +1,17 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import AlertContext from '../../Context/Alerts/alertContext';
+import AuthContext from '../../Context/Auth/authContext';
 
 const NewAccount = () => {
 
   //extract the values from the context
   const alertContext = useContext(AlertContext);
   const { alert, showAlert} = alertContext;
+
+  //auth context
+  const authContext = useContext(AuthContext);
+  const { registerUser } = authContext;
 
   const [ newUser, setNewUser ] = useState({
     username: '',
@@ -48,6 +53,11 @@ const NewAccount = () => {
       showAlert("Your password confirmation does not match your password", "alert-error")
       return
     }
+
+    //send to the action
+    registerUser({
+      username, email, password
+    })
   }
 
 
@@ -75,7 +85,7 @@ const NewAccount = () => {
               <label htmlFor="email">Email</label>
               <input 
                     type="email"
-                    placeholder="email"
+                    placeholder="Email"
                     id='email-signup'
                     name="email"
                     onChange={onChangeSignUp}
