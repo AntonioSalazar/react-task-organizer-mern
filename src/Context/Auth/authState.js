@@ -69,7 +69,7 @@ const AuthState = props => {
             const response = await axiosClient.get('/api/auth');
             dispatch({
                 type: GET_USER,
-                payload: response.data
+                payload: response.data.user
             })
 
         } catch (error) {
@@ -84,9 +84,10 @@ const AuthState = props => {
     const login = async(data) => {
         try {
             const response = await axiosClient.post('/api/auth', data);
+            console.log(response)
             dispatch({
                 type: SUCCESSFUL_LOGIN,
-                payload: response.data
+                payload: response.data.user
             })
         //get the user
         authenticatedUser()
