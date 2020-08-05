@@ -1,9 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AlertContext from '../../Context/Alerts/alertContext';
 import AuthContext from '../../Context/Auth/authContext';
 
-const NewAccount = () => {
+const NewAccount = (props) => {
 
   //extract the values from the context
   const alertContext = useContext(AlertContext);
@@ -11,7 +11,14 @@ const NewAccount = () => {
 
   //auth context
   const authContext = useContext(AuthContext);
-  const { registerUser } = authContext;
+  const { registerUser, message, authenticated } = authContext;
+
+  //when user login, signs up is duplicated
+   useEffect(() => {
+      if(authenticated){
+        props.history.push('/projects')
+      }
+   },[message, authenticated, props]);
 
   const [ newUser, setNewUser ] = useState({
     username: '',
