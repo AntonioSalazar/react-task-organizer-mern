@@ -16,6 +16,7 @@ export default(state, action) => {
     switch(action.type){
 
         case SUCCESSFUL_SIGNUP:
+        case SUCCESSFUL_LOGIN:
             localStorage.setItem("token", action.payload.token);
             return{
                 ...state,

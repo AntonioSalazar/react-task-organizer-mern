@@ -1,13 +1,33 @@
-import React, {useState} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import { Link } from 'react-router-dom';
+import AlertContext from '../../Context/Alerts/alertContext';
+import AuthContext from '../../Context/Auth/authContext';
 
-const Login = () => {
+const Login = (props) => {
+
+    
+    //extract the values from the context
+    const alertContext = useContext(AlertContext);
+    const { alert, showAlert} = alertContext;
+
+    //auth context
+    const authContext = useContext(AuthContext);
+    const { login, message, authenticated } = authContext;
+
+      //when user login, signs up is duplicated
+    useEffect(() => {
+        if(authenticated){
+            props.history.push('/projects')
+        }
+        if(message){
+            showAlert(message.msg, message.category)
+        }
+    },[message, authenticated, props]);
 
     const [ userInfo, setUserInfo ] = useState({
         email: "",
         password: ""
     });
-    const [setError] = useState(false);
 
     const { email, password } = userInfo;
     //Saving users input into the local state
@@ -25,17 +45,22 @@ const Login = () => {
 
         //If the user didnt filled a field
         if(email.trim() === '' || password.trim() === ''){
-            setError(true)
+            showAlert('All the fields are required', 'alert-error')
             return
         }
 
-        setError(false);
-        console.log('form submitted')
+        //send it to the action
+        login({email, password})
     }
 
     return ( 
 
         <div className="container">
+            {
+                alert 
+                ? (<div className={`alert ${alert.category}`} >{alert.msg}</div>)  
+                : null
+            }
             <form 
                 className='loginForm'
                 onSubmit={submitForm}

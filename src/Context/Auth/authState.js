@@ -1,4 +1,4 @@
-import React, { useReducer, Children } from 'react';
+import React, { useReducer } from 'react';
 
 //axios
 import axiosClient from '../../config/axios';
@@ -67,15 +67,38 @@ const AuthState = props => {
 
         try {
             const response = await axiosClient.get('/api/auth');
-            console.log(response);
             dispatch({
                 type: GET_USER,
                 payload: response.data
             })
+
         } catch (error) {
             console.log(error.response);
             dispatch({
-                type: SUCCESSFUL_LOGIN
+                type: UNSUCCESSFUL_LOGIN
+            })
+        }
+    }
+
+    //login
+    const login = async(data) => {
+        try {
+            const response = await axiosClient.post('/api/auth', data);
+            dispatch({
+                type: SUCCESSFUL_LOGIN,
+                payload: response.data
+            })
+        //get the user
+        authenticatedUser()
+        } catch (error) {
+              console.log(error.response.data.msg);
+              const alert ={
+                msg: error.response.data.msg,
+                category: "alert-error"
+            }
+            dispatch({
+                type: UNSUCCESSFUL_LOGIN,
+                payload: alert
             })
         }
     }
@@ -91,7 +114,7 @@ const AuthState = props => {
                 message: state.message,
 
                 registerUser,
-                
+                login
             }}
         >
             {props.children}
