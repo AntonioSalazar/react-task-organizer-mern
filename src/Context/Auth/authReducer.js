@@ -31,12 +31,16 @@ export default(state, action) => {
 
         case UNSUCCESSFUL_SIGNUP:
         case UNSUCCESSFUL_LOGIN:
+        case LOGOUT:
             localStorage.removeItem('token');
             return{
                 ...state,
                 token: null,
+                user: null,
+                authenticated: null,
                 message: action.payload
             }
+
 
         default:
             return state

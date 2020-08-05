@@ -11,6 +11,7 @@ import ProjectState from './Context/Projects/projectState';
 import TaskState from './Context/Tasks/TaskState';
 import AlertState from './Context/Alerts/alertState';
 import AuthState from './Context/Auth/authState';
+import PrivateRoute from './components/routes/PrivateRoute';
 
 //token auth
 import tokenAuth from './config/authToken';
@@ -32,7 +33,7 @@ function App() {
               <Switch>
                 <Route exact path='/' component={Login}/>
                 <Route exact path='/sign-up' component={NewAccount}/>
-                <Route exact path='/projects' component={Projects}/>
+                <PrivateRoute exact path='/projects' component={Projects}/>
               </Switch>
             </Router>
           </AuthState>

@@ -7,7 +7,7 @@ const Header = () => {
 
     //get the auth info
     const authContext = useContext(AuthContext);
-    const { authenticatedUser, user } =  authContext;
+    const { authenticatedUser, user, logout } =  authContext;
 
     useEffect(() => {
         authenticatedUser();
@@ -20,7 +20,10 @@ const Header = () => {
           }
           
           <nav className="header__nav">
-            <a href="#!">Sign Out</a>
+            <button
+              className='btn btn-danger signout'
+              onClick={()=> logout()}
+            >Sign out</button>
           </nav>
         </header>
      );
