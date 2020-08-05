@@ -12,6 +12,15 @@ import TaskState from './Context/Tasks/TaskState';
 import AlertState from './Context/Alerts/alertState';
 import AuthState from './Context/Auth/authState';
 
+//token auth
+import tokenAuth from './config/authToken';
+
+//check if we have a token
+const token = localStorage.getItem('token');
+if(token){
+  tokenAuth(token);
+}
+
 function App() {
 
   return (
