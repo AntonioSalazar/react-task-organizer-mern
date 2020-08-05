@@ -18,6 +18,9 @@ const NewAccount = (props) => {
       if(authenticated){
         props.history.push('/projects')
       }
+      if(message){
+        showAlert(message.msg, message.category)
+      }
    },[message, authenticated, props]);
 
   const [ newUser, setNewUser ] = useState({
