@@ -2,6 +2,7 @@ import React, { useReducer, Children } from 'react';
 
 //axios
 import axiosClient from '../../config/axios';
+import authToken from '../../config/authToken';
 
 //types
 import {
@@ -39,7 +40,10 @@ const AuthState = props => {
             dispatch({
                 type: SUCCESSFUL_SIGNUP,
                 payload: response.data
-            })
+            });
+
+            //get the user
+            authenticatedUser()
         } catch (error) {
             // console.log(error.response.data.msg);
             const alert ={
@@ -49,6 +53,29 @@ const AuthState = props => {
             dispatch({
                 type: UNSUCCESSFUL_SIGNUP,
                 payload: alert
+            })
+        }
+    }
+
+    //return authenticated user
+    const authenticatedUser = async()=> {
+        const token = localStorage.getItem('token')
+        if(token){
+            //TODO: function to send token via headers
+            authToken(token)
+        }
+
+        try {
+            const response = await axiosClient.get('/api/auth');
+            console.log(response);
+            dispatch({
+                type: GET_USER,
+                payload: response.data
+            })
+        } catch (error) {
+            console.log(error.response);
+            dispatch({
+                type: SUCCESSFUL_LOGIN
             })
         }
     }
@@ -64,6 +91,7 @@ const AuthState = props => {
                 message: state.message,
 
                 registerUser,
+                
             }}
         >
             {props.children}

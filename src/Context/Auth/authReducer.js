@@ -22,13 +22,21 @@ export default(state, action) => {
                 authenticated: true,
                 message: null
             }
+        case GET_USER:
+            return {
+                ...state,
+                user: action.payload
+            }
 
         case UNSUCCESSFUL_SIGNUP:
+        case UNSUCCESSFUL_LOGIN:
+            localStorage.removeItem('token');
             return{
                 ...state,
                 token: null,
                 message: action.payload
             }
+
         default:
             return state
     }
