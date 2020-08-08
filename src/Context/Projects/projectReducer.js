@@ -4,7 +4,8 @@ import {
     ADD_NEW_PROJECT, 
     VALIDATE_FORM,
     GET_SELECTED_PROJECT,
-    DELETE_PROJECT
+    DELETE_PROJECT,
+    PROJECT_ERROR
 } from '../../types/index'
 
 export default(state, action) => {
@@ -47,6 +48,12 @@ export default(state, action) => {
                 ...state,
                 projects: state.projects.filter(project => project._id !== action.payload),
                 selectedProject: null
+            }
+
+        case PROJECT_ERROR:
+            return {
+                ...state,
+                message: action.payload
             }
         default:
             return state

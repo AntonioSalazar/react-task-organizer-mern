@@ -10,7 +10,8 @@ import { FORM_NEW_PROJECT,
          ADD_NEW_PROJECT, 
          VALIDATE_FORM,
          GET_SELECTED_PROJECT,
-         DELETE_PROJECT
+         DELETE_PROJECT,
+         PROJECT_ERROR
         } from '../../types/index';
 
 import axiosClient from '../../config/axios'
@@ -22,7 +23,8 @@ const ProjectState = props => {
         newProjectForm : false,
         projects : [],
         errorForm : false,
-        selectedProject: null
+        selectedProject: null,
+        message: null
     }
 
     //Dispatch
@@ -48,7 +50,14 @@ const ProjectState = props => {
                 payload: result.data.projects
             })
         } catch (error) {
-            console.log(error);
+            const alert = {
+                msg: 'There was an error',
+                category: 'alert-error'
+            }
+            dispatch({
+                type: PROJECT_ERROR,
+                payload: alert
+            })
         }
     }
 
@@ -62,7 +71,14 @@ const ProjectState = props => {
                 payload: result.data
             })
         } catch (error) {
-            console.log(error);
+            const alert = {
+                msg: 'There was an error',
+                category: 'alert-error'
+            }
+            dispatch({
+                type: PROJECT_ERROR,
+                payload: alert
+            })
         }
     }
 
@@ -92,7 +108,14 @@ const ProjectState = props => {
                 payload: projectId
             })
         } catch (error) {
-            console.log(error);
+            const alert = {
+                msg: 'There was an error',
+                category: 'alert-error'
+            }
+            dispatch({
+                type: PROJECT_ERROR,
+                payload: alert
+            })
         }
     }
 
@@ -105,6 +128,7 @@ const ProjectState = props => {
                 projects: state.projects,
                 errorForm : state.errorForm,
                 selectedProject: state.selectedProject,
+                message: state.message,
 
                 showNewProjectForm,
                 getProjectsSideBar,
