@@ -39,7 +39,7 @@ export default(state, action) => {
         case GET_SELECTED_PROJECT:
             return {
                 ...state,
-                selectedProject: state.projects.filter(project => project.id === action.payload)
+                selectedProject: state.projects.filter(project => project._id === action.payload)
             }
         
         case DELETE_PROJECT:
