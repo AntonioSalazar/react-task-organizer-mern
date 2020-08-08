@@ -1,5 +1,4 @@
 import React, { useReducer }from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 //context
 import ProjectContext from './projectContext';
@@ -14,13 +13,11 @@ import { FORM_NEW_PROJECT,
          DELETE_PROJECT
         } from '../../types/index';
 
+import axiosClient from '../../config/axios'
+
 
 const ProjectState = props => {
-    const projects = [
-        {id: 1, newProjectName : 'Intranet'},
-        {id: 2, newProjectName : 'Deployment'},
-        {id: 3, newProjectName : 'Production'}
-    ]
+
     const initialState = {
         newProjectForm : false,
         projects : [],
@@ -42,22 +39,31 @@ const ProjectState = props => {
     }
 
     //get the projects
-    const getProjectsSideBar = () => {
-        dispatch({
-            type: GET_PROJECTS_SIDEBAR,
-            payload: projects
-        })
+    const getProjectsSideBar = async () => {
+        try {
+            const result = await axiosClient.get('/api/projects');
+
+            dispatch({
+                type: GET_PROJECTS_SIDEBAR,
+                payload: result.data.projects
+            })
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     //Add new project
-    const addNewProject = project => {
-        project.id = uuidv4();
+    const addNewProject = async project => {
 
-        //project intto the state
-        dispatch({
-            type: ADD_NEW_PROJECT,
-            payload: project
-        })
+        try {
+            const result = await axiosClient.post('/api/projects', project)
+            dispatch({
+                type: ADD_NEW_PROJECT,
+                payload: result.data
+            })
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     //VALIDATE FORM

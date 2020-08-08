@@ -25,8 +25,8 @@ const EachProjectListLi = ({project}) => {
             <button
                 type='button'
                 className='projectsList__btn btn btn-blank'
-                onClick={() => selectProject(project.id)}
-            >{project.newProjectName}</button>
+                onClick={() => selectProject(project._id)}
+            >{project.name}</button>
         </li>
      );
 }

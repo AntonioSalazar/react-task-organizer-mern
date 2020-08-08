@@ -14,10 +14,10 @@ const NewProjectForm = () => {
     const { newProjectForm, errorForm, showNewProjectForm, addNewProject, showError } = projectsContext;
 
     const [ newProject, setNewProject ] = useState({
-        newProjectName: ''
+        name: ''
     });
 
-    const { newProjectName } = newProject;
+    const { name } = newProject;
 
 
     //saving the name of the new project
@@ -33,7 +33,7 @@ const NewProjectForm = () => {
          e.preventDefault();
 
          //check input has been filled
-         if (newProjectName.trim() === '') {
+         if (name.trim() === '') {
              showError(true)
              return
          }
@@ -44,7 +44,7 @@ const NewProjectForm = () => {
 
          //form to blank
          setNewProject({
-             newProjectName: ''
+             name: ''
          })
 
      }
@@ -69,11 +69,11 @@ const NewProjectForm = () => {
                     >
                         <input 
                             type="text"
-                            name='newProjectName'
+                            name='name'
                             placeholder="Name of the Project"
                             className='newProjectForm__input'
                             onChange={inputNewProject}
-                            value={newProjectName}
+                            value={name}
                         /> 
         
                         <input type="submit" className='newProjectForm__btn-submit' value='Add Project'/>

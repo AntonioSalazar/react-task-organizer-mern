@@ -30,7 +30,7 @@ const ListNewTasks = () => {
 
     return ( 
         <Fragment >
-            <h2 className='listNewTasks__title'>Project: {currentProject.newProjectName}</h2>
+            <h2 className='listNewTasks__title'>Project: {currentProject.name}</h2>
             <ul className='listNewTasks__tasks'>
                 {
                     projectTasks.length === 0
