@@ -4,17 +4,22 @@ import AuthContext from '../../Context/Auth/authContext';
 
 const PrivateRoute = ({ component: Component, ...props}) => {
 
-
+    //auth context
     const authContext = useContext(AuthContext);
-    const { authenticated } = authContext;
+    const { authenticatedUser, authenticated, loading } = authContext;
+
+    useEffect(() => {
+        authenticatedUser();
+    }, [])
+
     return(
-        <Route
-            {...props} render={ props => !authenticated ? (
-                <Redirect to='/'></Redirect>
+        <Route {...props} render={ props => !authenticated && !loading? 
+            (
+                <Redirect to='/'/>
             ) : (
                 <Component {...props}/>
             )}
-        ></Route>
+        />
     )
 }
 
