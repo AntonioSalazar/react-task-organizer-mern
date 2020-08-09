@@ -21,7 +21,7 @@ const EachNewTask = ({task}) => {
 
     //function that gets executed when a user click on the delete button of a task
     const deleteSelectedTask = id => {
-        deleteTask(id);
+        deleteTask(id, currentProject._id);
         getTasks(currentProject.id)
     }
 
