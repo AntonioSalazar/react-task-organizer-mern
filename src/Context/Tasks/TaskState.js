@@ -36,19 +36,22 @@ const TaskState = props => {
     //Functions
 
     //Tasks for an specific project
-    const getTasks = projectId => {
-        dispatch({
-            type: TASKS_PROJECT,
-            payload: projectId
-        })
+    const getTasks = async project => {
+        try {
+            const result = await axiosClient.get('../api/tasks', { params: { project } })
+            dispatch({
+                type: TASKS_PROJECT,
+                payload: result.data.tasks
+            })
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     //Function to add new tasks
     const addNewTask = async task => {
         try {
-            console.log(task);
             const result = await axiosClient.post('/api/tasks', task)
-            console.log(result);
             dispatch({
                 type: ADD_NEW_TASK, 
                 payload: task

@@ -81,7 +81,7 @@ const EachNewTask = ({task}) => {
                 <button
                     type='button'
                     className='listNewTasks__tasks-edit-delete'
-                    onClick={()=>deleteSelectedTask(task.id)}
+                    onClick={()=>deleteSelectedTask(task._id)}
                 >Delete</button>
             </div>
         </li>
