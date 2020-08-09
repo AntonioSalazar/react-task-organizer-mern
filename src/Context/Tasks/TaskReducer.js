@@ -4,7 +4,6 @@ import {
     ADD_NEW_TASK,
     VALIDATE_TASK_FORM,
     DELETE_TASK,
-    TASK_STATE,
     CURRENT_TASK,
     UPDATE_TASK,
     CLEAN_TASK
@@ -40,10 +39,9 @@ export default(state, action) => {
                 projectTasks: state.projectTasks.filter(task => task._id !== action.payload)
             }
         case UPDATE_TASK:
-        case TASK_STATE:
             return{
                 ...state,
-                projectTasks: state.projectTasks.map(task => task.id === action.payload.id? action.payload :task)
+                projectTasks: state.projectTasks.map(task => task._id === action.payload._id? action.payload :task)
             }
 
         case CURRENT_TASK:

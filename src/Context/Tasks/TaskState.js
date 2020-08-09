@@ -6,7 +6,6 @@ import {
     ADD_NEW_TASK,
     VALIDATE_TASK_FORM,
     DELETE_TASK,
-    TASK_STATE,
     CURRENT_TASK,
     UPDATE_TASK,
     CLEAN_TASK
@@ -51,6 +50,7 @@ const TaskState = props => {
     //Function to add new tasks
     const addNewTask = async task => {
         try {
+            //eslint-disable-next-line
             const result = await axiosClient.post('/api/tasks', task)
             dispatch({
                 type: ADD_NEW_TASK, 
@@ -81,13 +81,7 @@ const TaskState = props => {
         }
     }
 
-    //CHANGES THE STATE OF EACH TASK
-    const changeTaskState = task => {
-        dispatch({
-            type: TASK_STATE,
-            payload: task
-        })
-    }
+
 
     //EXTRACTS A TASK FOR US TO EDIT
     const saveCurrentTask = task => {
@@ -98,11 +92,16 @@ const TaskState = props => {
     }
 
     //EDIT OR MODIFY A TASK
-    const updateSelectedTask = task => {
-        dispatch({
-            type: UPDATE_TASK,
-            payload: task
-        })
+    const updateSelectedTask = async task => {
+        try {
+            const result = await axiosClient.put(`api/tasks/${task._id}`, task)
+            dispatch({
+                type: UPDATE_TASK,
+                payload: result.data.task
+            })
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     //CLEAN SELECTED TASK
@@ -123,7 +122,6 @@ const TaskState = props => {
                 addNewTask,
                 validateTask,
                 deleteTask,
-                changeTaskState,
                 saveCurrentTask,
                 updateSelectedTask,
                 cleanTask
