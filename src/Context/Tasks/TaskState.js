@@ -17,8 +17,9 @@ import {
 import TaskContext from './TaskContext'
 //Reducer
 import TaskReducer from './TaskReducer'
-//axiosClient
-import axiosClient from '../../config/axios'
+
+//axios client
+import axiosClient from '../../config/axios';
 
 const TaskState = props => {
 
@@ -43,8 +44,9 @@ const TaskState = props => {
     }
 
     //Function to add new tasks
-    const addNewTask =async task => {
+    const addNewTask = async task => {
         try {
+            console.log(task);
             const result = await axiosClient.post('/api/tasks', task)
             console.log(result);
             dispatch({
