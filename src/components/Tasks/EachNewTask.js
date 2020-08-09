@@ -22,7 +22,7 @@ const EachNewTask = ({task}) => {
     //function that gets executed when a user click on the delete button of a task
     const deleteSelectedTask = id => {
         deleteTask(id);
-        getTasks(currentProject.id)
+        getTasks(currentProject._id)
     }
 
     //function that modifies the state of a task
@@ -81,7 +81,7 @@ const EachNewTask = ({task}) => {
                 <button
                     type='button'
                     className='listNewTasks__tasks-edit-delete'
-                    onClick={()=>deleteSelectedTask(task.id)}
+                    onClick={()=>deleteSelectedTask(task._id)}
                 >Delete</button>
             </div>
         </li>

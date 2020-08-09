@@ -1,5 +1,4 @@
 import React, { useReducer } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 //Types
 import {
@@ -18,23 +17,14 @@ import {
 import TaskContext from './TaskContext'
 //Reducer
 import TaskReducer from './TaskReducer'
+//axiosClient
+import axiosClient from '../../config/axios'
 
 const TaskState = props => {
 
     const taskInitialState = {
-        tasks: [
-            {id: 1, name: 'Meeting 1', state: true, projectId: 1},
-            {id: 2, name: 'Meeting 10', state: true, projectId: 1},
-            {id: 3, name: 'Meeting 2', state: false, projectId: 2},
-            {id: 4, name: 'Meeting 3', state: true, projectId: 3},
-            {id: 5, name: 'Meeting 4', state: true, projectId: 1},
-            {id: 6, name: 'Meeting 5', state: false, projectId: 2},
-            {id: 7, name: 'Meeting 6', state: true, projectId: 3},
-            {id: 8, name: 'Meeting 7', state: true, projectId: 1},
-            {id: 9, name: 'Meeting 8', state: false, projectId: 2},
-            {id: 10, name: 'Meeting 9', state: true, projectId: 3},
-        ],
-        projectTasks: null,
+
+        projectTasks: [],
         errorForm: false,
         selectedTask : null
     }
@@ -53,12 +43,17 @@ const TaskState = props => {
     }
 
     //Function to add new tasks
-    const addNewTask = task => {
-        task.id = uuidv4()
-        dispatch({
-            type: ADD_NEW_TASK, 
-            payload: task
-        })
+    const addNewTask =async task => {
+        try {
+            const result = await axiosClient.post('/api/tasks', task)
+            console.log(result);
+            dispatch({
+                type: ADD_NEW_TASK, 
+                payload: task
+            })
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     //VALIDATE and shows an error in case if necessary
@@ -110,7 +105,6 @@ const TaskState = props => {
     return (
         <TaskContext.Provider
             value={{
-                tasks: state.tasks,
                 projectTasks: state.projectTasks,
                 errorForm: state.errorForm,
                 selectedTask: state.selectedTask,
